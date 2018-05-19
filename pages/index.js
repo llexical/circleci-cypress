@@ -1,7 +1,11 @@
+import React from 'react';
+
+import Page from '../core/layout/page';
+
 const Index = () => (
-  <div>
-    <p>Hello Next.js</p>
-  </div>
+  <Page>
+    <p>CircleCI Cypress Demo</p>
+  </Page>
 );
 
 export default Index;

@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "cy": true,
+    "Cypress": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "prefer-destructuring": ["warn", {
+      "VariableDeclarator": {
+        "array": true,
+        "object": true
+      }
+    }]
+  }
+}
