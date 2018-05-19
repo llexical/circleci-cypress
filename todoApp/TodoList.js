@@ -12,9 +12,9 @@ const TodoList = ({ todos, remove }) => {
 };
 
 TodoList.propTypes = {
-  todos: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })).isRequired,
   remove: PropTypes.func.isRequired,
 };
 
