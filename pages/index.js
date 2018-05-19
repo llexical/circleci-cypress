@@ -8,12 +8,16 @@ const Title = styled('h1')`
   text-align: center
 `;
 
+const Main = styled('main')`
+  text-align: center;
+`;
+
 const Index = () => (
   <Page>
-    <main>
+    <Main>
       <Title>CircleCI Cypress Demo</Title>
       <TodoApp />
-    </main>
+    </Main>
   </Page>
 );
 

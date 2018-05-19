@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TodoAppWrapper from './TodoAppWrapper';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
@@ -33,16 +34,15 @@ class TodoApp extends React.Component {
   }
 
   render() {
-    console.log(this.state.data);
     // Render JSX
     return (
-      <div>
+      <TodoAppWrapper>
         <TodoForm addTodo={this.addTodo} />
         <TodoList
           todos={this.state.data}
           remove={this.handleRemove}
         />
-      </div>
+      </TodoAppWrapper>
     );
   }
 }

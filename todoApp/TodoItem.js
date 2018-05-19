@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Item = styled('li')`
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+}
+`;
 
 const TodoItem = ({ todo, remove }) => (
-  (<li onClick={() => remove(todo.id)}>{todo.text}</li>)
+  (<Item onClick={() => remove(todo.id)}>{todo.text}</Item>)
 );
 
 TodoItem.propTypes = {

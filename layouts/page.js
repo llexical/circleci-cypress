@@ -10,7 +10,7 @@ const Page = ({ children, title }) => (
       <title>{title}</title>
     </Head>
     <style jsx global>{`
-        body { 
+        body {
           font: 16px Helvetica;
         }
     `}
@@ -21,7 +21,7 @@ const Page = ({ children, title }) => (
 );
 
 Page.defaultProps = {
-  title: 'CircleCi Cypress',
+  title: 'CircleCi Cypress Demo',
 };
 
 Page.propTypes = {

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button, TextInput } from '../core/form';
+import TodoFormWrapper from './TodoFormWrapper';
+
 class TodoForm extends React.Component {
   constructor(props) {
     // Pass props to parent class
@@ -24,10 +27,12 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input ref={this.ref} />
-        <button type="submit">+</button>
-      </form>
+      <TodoFormWrapper>
+        <form onSubmit={this.onSubmit}>
+          <TextInput innerRef={this.ref} />
+          <Button type="submit">+</Button>
+        </form>
+      </TodoFormWrapper>
     );
   }
 }
