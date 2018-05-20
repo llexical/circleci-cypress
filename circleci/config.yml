@@ -1,0 +1,89 @@
+version: 2
+
+# build job parameters as a template
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    # the Docker image with Cypress dependencies
+    - image: cypress/base:8
+      environment:
+        ## this enables colors in the output
+        TERM: xterm
+
+        
+jobs:
+  build:
+    # Main build process
+    <<: *defaults
+    steps:
+      # Checkout repo
+      - checkout
+      # Restore npm cache
+      - restore_cache:
+          keys:
+            - v1-npm-deps-{{ checksum "package.json" }}
+            - v1-npm-deps
+      # Install
+      - run: npm install
+      # Build
+      - run: npm run build
+      # Save updated npm cache
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      # Save public repo to a shared workspace
+      # This way can be used in future tests
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .next
+
+  e2eTests:
+    # End to end tests (main flow)
+    <<: *defaults
+    steps:
+      # Checkout git repo
+      - checkout
+      # Attach the public repo created in the build task
+      - attach_workspace:
+          at: ~/repo
+      # Restore the npm cache
+      - restore_cache:
+          keys:
+            - v1-npm-deps-{{ checksum "package.json" }}
+            - v1-npm-deps
+      # Run the test server
+      - run:
+          name: Start Server
+          command: npm run start
+          background: true
+      # Wait for the server to be running before you start tests
+      - run:
+          shell: /bin/sh
+          command: |
+            wget --retry-connrefused --waitretry=1 --read-timeout=20 -t 10 http://localhost:3000
+      # Run cypress tests
+      - run:
+          name: Running E2E tests
+          command: npm run cypress:run
+      # Save the test results to circleci to be used for insights
+      - store_test_results:
+          path: cypress/results
+      # Store the videos in artifacts for debugging
+      - store_artifacts:
+          name: Save videos
+          path: cypress/videos
+      # Store the screenshots in artifacts for debugging
+      - store_artifacts:
+          name: Save screenshots
+          path: cypress/screenshots
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - e2eTests:
+          requires:
+            - build

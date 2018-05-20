@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --spec cypress/integration/main_flow_spec.js --reporter junit --reporter-options \"mochaFile=cypress/results/main_flow_spec.xml\"",
+    "cypress:run": "cypress run --spec cypress/integration/mainSpec.js --reporter junit --reporter-options \"mochaFile=cypress/results/main_flowSpec.xml\"",
     "start:dev": "next",
     "start": "npm run build && next start",
     "build": "next build ./"
