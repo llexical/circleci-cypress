@@ -29,8 +29,8 @@ class TodoForm extends React.Component {
     return (
       <TodoFormWrapper>
         <form onSubmit={this.onSubmit}>
-          <TextInput innerRef={this.ref} />
-          <Button type="submit">+</Button>
+          <TextInput id="test-todo-input" innerRef={this.ref} />
+          <Button id="test-todo-submit" type="submit">+</Button>
         </form>
       </TodoFormWrapper>
     );

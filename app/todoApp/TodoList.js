@@ -12,7 +12,7 @@ const List = styled('ul')`
 `;
 
 const TodoList = ({ todos, remove }) => (
-  <List>
+  <List className="test-todo-list">
     {todos.map(todo => (
       <TodoItem todo={todo} key={todo.id} remove={remove} />
     ))}

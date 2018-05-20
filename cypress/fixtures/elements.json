@@ -1,4 +1,5 @@
 {
-    "input": "",
-    "submit": ""
+    "input": "#test-todo-input",
+    "submit": "#test-todo-submit",
+    "items": ".test-todo-list li"
 }
