@@ -2,7 +2,9 @@
   "extends": "airbnb",
   "globals": {
     "cy": true,
-    "Cypress": true
+    "Cypress": true,
+    "describe": true,
+    "it": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

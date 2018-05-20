@@ -1,24 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Page from '../layouts/page';
-import TodoApp from '../todoApp';
+import TodoApp from '../app/todoApp';
+
+const Main = styled('main')`
+  font: 16px Helvetica;
+  text-align: center;
+`;
 
 const Title = styled('h1')`
   text-align: center
 `;
 
-const Main = styled('main')`
-  text-align: center;
-`;
-
 const Index = () => (
-  <Page>
-    <Main>
-      <Title>CircleCI Cypress Demo</Title>
-      <TodoApp />
-    </Main>
-  </Page>
+  <Main>
+    <Title>CircleCI Cypress Demo</Title>
+    <TodoApp />
+  </Main>
 );
 
 export default Index;
